@@ -13,12 +13,21 @@ import { MessagesService } from 'src/app/services/messages.service';
 })
 export class NewMomentComponent {
   btnText= 'Compartilhar';
+  image?: File;
 
   constructor(
     private momentService: MomentsService, 
     private messagesService: MessagesService,
     private router: Router) 
     {}
+
+    onFileSelected(event: any) {
+      const file: File = event.target.files[0];
+  
+      this.image = file;
+    }
+  
+    buildForm() {}
 
   async createHandler(moment: Moment){
     const formData = new FormData();
